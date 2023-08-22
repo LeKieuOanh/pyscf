@@ -13,7 +13,7 @@ available XC functionals.
 '''
 
 mol = pyscf.M(
-    atom = 'H 0 0 0; F 0 0 1.1',  # in Angstrom
+    atom = 'H 0 0 0; H 0 0 1.1',  # in Angstrom
     basis = '631g',
     symmetry = True,
 )
@@ -27,9 +27,9 @@ mf = mol.KS()
 #mf.xc = 'b97,pw91'
 #mf.xc = 'pbe0'
 #mf.xc = 'b3p86'
-#mf.xc = 'wb97x'
+mf.xc = 'wb97x'
 #mf.xc = '' or mf.xc = None # Hartree term only, without exchange
-mf.xc = 'b3lyp'
+#mf.xc = 'b3lyp'
 mf.kernel()
 
 # Orbital energies, Mulliken population etc.

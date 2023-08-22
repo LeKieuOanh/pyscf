@@ -14,7 +14,7 @@ from pyscf import gto, dft
 from pyscf.hessian import uks as uks_hess
 from pyscf import tdscf
 
-mol = gto.M(atom="H; F 1 1.", basis='631g')
+mol = gto.M(atom="H; H 1 1.", basis='631g')
 
 # Calculation using libxc
 mf = dft.UKS(mol)
