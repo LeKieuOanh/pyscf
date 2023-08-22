@@ -22,6 +22,8 @@ from pyscf.mp import dfmp2
 from pyscf.mp import ump2
 from pyscf.mp import gmp2
 from pyscf.mp import dfgmp2
+from pyscf.mp import obmp2, obmp2_active, obmp2_faster
+from pyscf.mp import uobmp2_active, uobmp2_dfold, uobmp2_faster
 
 def MP2(mf, frozen=None, mo_coeff=None, mo_occ=None):
     if isinstance(mf, scf.uhf.UHF):
@@ -76,3 +78,35 @@ def GMP2(mf, frozen=None, mo_coeff=None, mo_occ=None):
     else:
         return gmp2.GMP2(mf, frozen, mo_coeff, mo_occ)
 GMP2.__doc__ = gmp2.GMP2.__doc__
+
+#==========================OBMP2==============================
+def OBMP2(mf, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = obmp2.OBMP2.__doc__
+    if isinstance(mf, scf.rhf.RHF):
+        return obmp2.OBMP2(mf, frozen, mo_coeff, mo_occ)
+    
+def OBMP2_faster(mf, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = obmp2_faster.OBMP2.__doc__
+    if isinstance(mf, scf.rhf.RHF):
+        return obmp2_faster.OBMP2(mf, frozen, mo_coeff, mo_occ)
+
+def OBMP2_active(mf, nact, nocc_act, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = obmp2_active.OBMP2.__doc__
+    if isinstance(mf, scf.rhf.RHF):
+        return obmp2_active.OBMP2(mf, nact, nocc_act, frozen, mo_coeff, mo_occ)
+
+ #==========================UOBMP2==============================   
+def UOBMP2_faster(mf, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = uobmp2_faster.UOBMP2.__doc__
+    if isinstance(mf, scf.uhf.UHF):
+        return uobmp2_faster.UOBMP2(mf, frozen, mo_coeff, mo_occ)
+    
+def UOBMP2_active(mf, nact, nocc_act, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = uobmp2_active.UOBMP2.__doc__
+    if isinstance(mf, scf.uhf.UHF):
+        return uobmp2_active.UOBMP2(mf, nact, nocc_act, frozen, mo_coeff, mo_occ)
+    
+def UOBMP2_dfold(mf, nact, nocc_act, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = uobmp2_dfold.UOBMP2.__doc__
+    if isinstance(mf, scf.uhf.UHF):
+        return uobmp2_dfold.UOBMP2(mf, nact, nocc_act, frozen, mo_coeff, mo_occ)
