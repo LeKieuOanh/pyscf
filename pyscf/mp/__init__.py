@@ -25,6 +25,7 @@ from pyscf.mp import dfgmp2
 from pyscf.mp import obmp2, obmp2_active, obmp2_faster
 from pyscf.mp import uobmp2, uobmp2_dfold, uobmp2_faster
 from pyscf.mp import uobmp2_active, uobmp2_active_scf
+from pyscf.mp import dfobmp2_faster_ram, dfuobmp2_faster_ram
 
 def MP2(mf, frozen=None, mo_coeff=None, mo_occ=None):
     if isinstance(mf, scf.uhf.UHF):
@@ -96,6 +97,11 @@ def OBMP2_active(mf, nact, nocc_act, frozen=0, mo_coeff=None, mo_occ=None):
     if isinstance(mf, scf.rhf.RHF):
         return obmp2_active.OBMP2(mf, nact, nocc_act, frozen, mo_coeff, mo_occ)
 
+def DFOBMP2(mf, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = dfobmp2_faster_ram.DFOBMP2.__doc__
+    if isinstance(mf, scf.rhf.RHF):
+        return dfobmp2_faster_ram.DFOBMP2(mf, frozen, mo_coeff, mo_occ)
+
  #==========================UOBMP2==============================   
 def UOBMP2(mf, frozen=0, mo_coeff=None, mo_occ=None):
     __doc__ = uobmp2.UOBMP2.__doc__
@@ -106,6 +112,11 @@ def UOBMP2_faster(mf, frozen=0, mo_coeff=None, mo_occ=None):
     __doc__ = uobmp2_faster.UOBMP2.__doc__
     if isinstance(mf, scf.uhf.UHF):
         return uobmp2_faster.UOBMP2(mf, frozen, mo_coeff, mo_occ)
+    
+def DFUOBMP2(mf, frozen=0, mo_coeff=None, mo_occ=None):
+    __doc__ = dfuobmp2_faster_ram.DFUOBMP2.__doc__
+    if isinstance(mf, scf.uhf.UHF):
+        return dfuobmp2_faster_ram.DFUOBMP2(mf, frozen, mo_coeff, mo_occ)
     
 def UOBMP2_active(mf, nact, nocc_act, frozen=0, mo_coeff=None, mo_occ=None):
     __doc__ = uobmp2_active.UOBMP2.__doc__
